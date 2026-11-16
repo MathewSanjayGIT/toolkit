@@ -113,7 +113,7 @@ y = targetHeight - newHeight;
 
 } else {
 
-y (targetHeight newHeight) / 2;
+y = (targetHeight - newHeight) / 2;
 
 }
 
