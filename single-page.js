@@ -1,4 +1,4 @@
-async function convert PDF() {
+async function convertPDF() {
 
 const file = document.getElementById("pdfFile").files[0];
 
