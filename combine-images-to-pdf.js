@@ -30,8 +30,10 @@ unit: "px", format: [img.width, img.height], });
 }
 
 pdf.addImage(imageUrl, "PNG", 0, 0, img.width, img.height);
+}
 
 pdf.save("combined.pdf");
+}
 
 function readFile(file) {
 
