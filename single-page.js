@@ -14,7 +14,7 @@ const pdf = await pdfjsLib.getDocument({ data: arrayBuffer, }).promise;
 
 const pageCanvases = [];
 
-let totalHeight = 0; let maxwidth = 0;
+let totalHeight = 0; let maxWidth = 0;
 
 // Render all pages
 
