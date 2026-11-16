@@ -1,58 +1,63 @@
-async function convert PDF() {
+async function convertPDF() {
 
-const loader document.getElementById("loader");
+const loader = document.getElementById("loader");
 
 loader.style.display = "flex";
 
-const convertButton document.querySelector( ); "button[onclick='convert PDF()']",
-
+const convertButton = document.querySelector( ); "button[onclick='convertPDF()']",
+);
 convertButton.disabled = true;
 
 try {
 
-const file document.getElementById("pdfFile").files[0]; if (Ifile) { alert("Please select a PDF");
+const file = document.getElementById("pdfFile").files[0];
+if (!file) { alert("Please select a PDF");
 
 return; }
 
-const scale parseFloat(document.getElementById("quality").value);
+const scale = parseFloat(document.getElementById("quality").value);
 
-const arrayBuffer await file.arrayBuffer();
+const arrayBuffer = await file.arrayBuffer();
 
-const pdf await pdfjsLib.getDocument({ data: arrayBuffer, }).promise;
+const pdf = await pdfjsLib.getDocument({ data: arrayBuffer, }).promise;
 
-const zip new JSZip();
+const zip = new JSZip();
 
-for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) { const page await pdf.getPage(pageNum);
+for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) { const page = await pdf.getPage(pageNum);
 
-scale: scale, const viewport }); page.getViewport({
+const viewport = page.getViewport({
+  scale: scale,
+  });
 
-const canvas document.createElement("canvas");
+const canvas = document.createElement("canvas");
 
 const ctx = canvas.getContext("2d");
 
-canvas.width viewport.width;
+canvas.width = viewport.width;
 
-canvas.height viewport.height;
+canvas.height = viewport.height;
 
-await page.render({ canvasContext: ctx, viewport: viewport, )).promise;
+await page.render({ canvasContext: ctx, viewport: viewport, }).promise;
 
-const blob await new Promise((resolve) -> canvas.toblob(resolve, "image/png"), );
+const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"), );
 
-zip.file(`page-${pageNum}.png', blob);
+zip.file(`page-${pageNum}.png`, blob);
+}
 
-const zipBlob await zip.generateAsync({ type: "blob", });
+const zipBlob = await zip.generateAsync({ type: "blob", });
 
 const link = document.createElement("a");
 
 link.href = URL.createObjectURL(zipBlob);
 
-link.download file.name.replace(/\.pdf$/i, "") + ".zip";
+link.download = file.name.replace(/\.pdf$/i, "") + ".zip";
 
 link.click();
 
 URL.revokeObjectURL(link.href);
 
-alert(pdf.numPages } catch (error) { console.error(error); "page(s) added to ZIP successfully.");
+alert(pdf.numPages + "page(s) added to ZIP successfully.");
+} catch (error) { console.error(error);
 
 alert("An error occurred while converting the PDF."); } finally {
 
