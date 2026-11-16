@@ -86,3 +86,4 @@ reader.readAsDataURL(file);
 }
 
 function canvasToBlob(canvas, quality) { return new Promise((resolve) => { canvas.toBlob(resolve, "image/jpeg", quality); }); }
+}
