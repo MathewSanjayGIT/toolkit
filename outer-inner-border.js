@@ -11,17 +11,17 @@ return;
 
 const preset = document.getElementById("qualityPreset").value;
 
-const [TARGET WIDTH, TARGET HEIGHT] = preset.split(",").map(Number);
+const [TARGET_WIDTH, TARGET_HEIGHT] = preset.split(",").map(Number);
 
-const INNER BORDER= parseInt(document.getElementById("innerBorder").value);
+const INNER_BORDER= parseInt(document.getElementById("innerBorder").value);
 
-const OUTER BORDER = parseInt(document.getElementById("outerBorder").value);
+const OUTER_BORDER = parseInt(document.getElementById("outerBorder").value);
 
 const GAP = parseInt(document.getElementById("gap").value);
 
-const BG COLOR = document.getElementById("bgColor").value;
+const BG_COLOR = document.getElementById("bgColor").value;
 
-const BORDER COLOR = document.getElementById("borderColor").value;
+const BORDER_COLOR = document.getElementById("borderColor").value;
 
 const reader = new FileReader();
 
@@ -35,19 +35,19 @@ const canvas = document.getElementById("canvas");
 
 const ctx = canvas.getContext("2d");
 
-canvas.width = TARGET WIDTH;
+canvas.width = TARGET_WIDTH;
 
-canvas.height = TARGET HEIGHT;
+canvas.height = TARGET_HEIGHT;
 
 ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
 
-const canvasWidth = TARGET WIDTH OUTER BORDER 2;
+const canvasWidth = TARGET_WIDTH - OUTER_BORDER * 2;
 
-const canvasHeight = TARGET HEIGHT OUTER BORDER 2;
+const canvasHeight = TARGET_HEIGHT - OUTER_BORDER * 2;
 
-const maxingWidth = canvasWidth GAP 2 INNER BORDER 2;
+const maxingWidth = canvasWidth - GAP * 2 - INNER_BORDER * 2;
 
-const maxImgHeight = canvasHeight GAP 2 INNER BORDER 2;
+const maxImgHeight = canvasHeight - GAP * 2 - INNER_BORDER * 2;
 
 const ratio = Math.min( maxingWidth/img.width, maxImgHeight/img.height,);
 
@@ -57,15 +57,15 @@ const imgHeight = img.height * ratio;
 
 // OUTER BORDER
 
-ctx.fillstyle = BORDER COLOR;
+ctx.fillstyle = BORDER_COLOR;
 
-ctx.fillRect(0, 0, TARGET WIDTH, TARGET HEIGHT);
+ctx.fillRect(0, 0, TARGET_WIDTH, TARGET_HEIGHT);
 
 //CARD BACKGROUND
 
 ctx.fillStyle = BG_COLOR;
 
-ctx.fillRect(OUTER BORDER, OUTER BORDER, canvasWidth, canvasHeight);
+ctx.fillRect(OUTER_BORDER, OUTER_BORDER, canvasWidth, canvasHeight);
 
 const imagex=
 
