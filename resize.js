@@ -8,13 +8,13 @@ if (this.value === "fit") {
 
 bgSection.style.display="block";
 
-cropSection.style.display "none";
+cropSection.style.display = "none";
 
-} else if (this.value = "crop") {
+} else if (this.value === "crop") {
 
-bgSection.style.display "none";
+bgSection.style.display = "none";
 
-cropSection.style.display "block";
+cropSection.style.display = "block";
 
 } else {
 
@@ -34,7 +34,7 @@ document.getElementById("mode").dispatchEvent(new Event("change"));
 
 function processImage() {
 
-const file document.getElementById("imageInput").files[0];
+const file = document.getElementById("imageInput").files[0];
 
 if (!file) {
 
@@ -46,28 +46,28 @@ return;
 
 const targetWidth = parseInt(document.getElementById("width").value);
 
-const targetHeight parseInt(document.getElementById("height").value);
+const targetHeight = parseInt(document.getElementById("height").value);
 
-const mode document.getElementById("mode").value;
+const mode = document.getElementById("mode").value;
 
-const reader new FileReader();
+const reader = new FileReader();
 
-reader.onload function (e) {
+reader.onload = function (e) {
 
-const img new Image();
+const img = new Image();
 
 img.onload = function () {
 
-const canvas document.getElementById("canvas");
+const canvas = document.getElementById("canvas");
 
-const ctx canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 
-canvas.width targetWidth;
+canvas.width = targetWidth;
 
-canvas.height targetHeight;
+canvas.height = targetHeight;
 
-ctx.imageSmoothingEnabled true;
-ctx.imageSmoothingQuality="high";
+ctx.imageSmoothingEnabled = true;
+ctx.imageSmoothingQuality = "high";
 
 ctx.clearRect(0, 0, targetWidth, targetHeight);
 
@@ -77,7 +77,7 @@ ctx.clearRect(0, 0, targetWidth, targetHeight);
 
 //
 
-if (mode == "stretch") {
+if (mode === "stretch") {
 
 ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
 
@@ -91,15 +91,15 @@ ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
 
 else if (mode === "crop") {
 
-const scale Math.max( ); targetWidth / img.width, targetHeight / img.height,
+const scale = Math.max( ); targetWidth / img.width, targetHeight / img.height,
 
-const newWidth img.width scale;
+const newWidth = img.width * scale;
 
 const newHeight = img.height * scale;
 
 const cropPosition = document.getElementById("cropPosition").value;
 
-const x (targetWidth newWidth) / 2;
+const x = (targetWidth - newWidth) / 2;
 
 let y;
 
@@ -109,13 +109,13 @@ y=0;
 
 } else if (cropPosition === "bottom") {
 
-y targetHeight - newHeight;
+y = targetHeight - newHeight;
 
 } else {
 
-}
-
 y (targetHeight newHeight) / 2;
+
+}
 
 ctx.drawImage(img, x, y, newWidth, newHeight); }
 
@@ -125,7 +125,7 @@ ctx.drawImage(img, x, y, newWidth, newHeight); }
 
 //
 
-else if (mode "fit") {
+else if (mode === "fit") {
 
 const bgColor = document.getElementById("bgColor").value;
 
@@ -133,50 +133,18 @@ ctx.fillStyle = bgColor;
 
 ctx.fillRect(0, 0, targetWidth, targetHeight);
 
-const scale Math.min(
+const scale = Math.min(
 
-targetWidth/img.width,
+targetWidth / img.width,
 targetHeight / img.height, );
 
-const newWidth img.width* scale;
+const newWidth = img.width* scale;
 
-const newHeight img.height * scale;
+const newHeight = img.height * scale;
 
-const x = (targetWidth newWidth) / 2;
+const x = (targetWidth - newWidth) / 2;
 
-const y (targetHeight newHeight) / 2;
-
-ctx.drawImage(img, x, y, newWidth, newHeight); }
-
-};
-
-img.src = e.target.result; };
-
-reader.readAsDataURL(file);
-
-}
-
-function downloadImage() {
-
-const canvas document.getElementById("canvas");
-
-const link document.createElement("a");
-
-link.download "output.png";
-
-link.href canvas.toDataURL("image/png");
-
-link.click();
-
-}targetHeight / img.height, );
-
-const newWidth img.width* scale;
-
-const newHeight img.height * scale;
-
-const x = (targetWidth newWidth) / 2;
-
-const y (targetHeight newHeight) / 2;
+const y = (targetHeight - newHeight) / 2;
 
 ctx.drawImage(img, x, y, newWidth, newHeight); }
 
@@ -190,13 +158,13 @@ reader.readAsDataURL(file);
 
 function downloadImage() {
 
-const canvas document.getElementById("canvas");
+const canvas = document.getElementById("canvas");
 
-const link document.createElement("a");
+const link = document.createElement("a");
 
-link.download "output.png";
+link.download = "output.png";
 
-link.href canvas.toDataURL("image/png");
+link.href = canvas.toDataURL("image/png");
 
 link.click();
 
