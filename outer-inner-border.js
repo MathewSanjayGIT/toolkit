@@ -81,7 +81,7 @@ ctx.fillRect( imagex, imageY, imgWidth + INNER_BORDER * 2, imgHeight + INNER_BOR
 
 // IMAGE
 
-ctx.drawImage( img, imagex INNER_BORDER, imageY+ INNER_BORDER, imgWidth, imgHeight, );
+ctx.drawImage( img, imagex + INNER_BORDER, imageY+ INNER_BORDER, imgWidth, imgHeight, );
 
 };
 
