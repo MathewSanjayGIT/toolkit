@@ -6,7 +6,7 @@ if (!file) { alert("Please select a PDF");
 
 return; }
 
-const scale parseFloat(document.getElementById("quality").value);
+const scale = parseFloat(document.getElementById("quality").value);
 
 const arrayBuffer = await file.arrayBuffer();
 
