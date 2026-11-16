@@ -10,11 +10,11 @@ return;
 
 }
 
-const canvas document.getElementById("qrCanvas");
+const canvas = document.getElementById("qrCanvas");
 
 // Clear previous QR
 
-const ctx canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -48,11 +48,11 @@ function downloadQR() {
 
 const canvas = document.getElementById("qrCanvas");
 
-const link document.createElement("a");
+const link = document.createElement("a");
 
 link.download = "qr-code.png";
 
-link.href canvas.toDataURL("image/png");
+link.href = canvas.toDataURL("image/png");
 
 link.click();
 
