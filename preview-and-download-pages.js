@@ -48,5 +48,5 @@ output.appendChild(document.createElement("br"));
 
 output.appendChild(document.createElement("br")); }
 
-alert(pdf.numPages + } "page(s) converted successfully");
+alert(pdf.numPages + "page(s) converted successfully");
 }
