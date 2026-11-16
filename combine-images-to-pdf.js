@@ -10,7 +10,7 @@ if (files.length === 0) { alert("Please select images"); return; }
 
 const {jsPDF} = window.jspdf;
 
-let pdf null;
+let pdf = null;
 
 for (let i=0; i < files.length; i++) {
 
@@ -46,6 +46,4 @@ reader.readAsDataURL(file); });
 function loadImage(src) { return new Promise((resolve) => { const img = new Image();
 
 img.onload = () => resolve(img);
- img.src = src;
-                                                          });
-                        }
+ img.src = src;});}
