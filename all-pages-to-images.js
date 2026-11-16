@@ -4,7 +4,7 @@ const loader = document.getElementById("loader");
 
 loader.style.display = "flex";
 
-const convertButton = document.querySelector( ); "button[onclick='convertPDF()']",
+const convertButton = document.querySelector( "button[onclick='convertPDF()']",
 );
 convertButton.disabled = true;
 
