@@ -14,20 +14,19 @@ let pdf null;
 
 for (let i=0; i < files.length; i++) {
 
-const imageUrl await readFile(files[i]);
+const imageUrl = await readFile(files[i]);
 
-const img await loadImage(imageUrl);
+const img = await loadImage(imageUrl);
 
-// Create first PDF page using image dimensions if (i === 0) {
+// Create first PDF page using image dimensions 
+  if (i === 0) {
 
-pdf new jsPDF(( orientation: img.width > img.height? "landscape": "portrait",
+pdf = new jsPDF({ orientation: img.width > img.height? "landscape": "portrait",
 
 unit: "px", format: [img.width, img.height], });
 
-} else { pdf.addPage( ); [img.width, img.height], img.width > img.height? "landscape": "portrait",
-
-}
-
+} else { pdf.addPage( [img.width, img.height], img.width > img.height? "landscape": "portrait",
+);
 }
 
 pdf.addImage(imageUrl, "PNG", 0, 0, img.width, img.height);
@@ -36,18 +35,17 @@ pdf.save("combined.pdf");
 
 function readFile(file) {
 
-return new Promise((resolve) => { const reader new FileReader();
+return new Promise((resolve) => { const reader = new FileReader();
 
-reader.onload (e) => resolve(e.target.result);
+reader.onload = (e) => resolve(e.target.result);
 
 reader.readAsDataURL(file); });
 
 }
 
-function loadImage(src) ( return new Promise((resolve) => { const img = new Image();
-
-}
+function loadImage(src) { return new Promise((resolve) => { const img = new Image();
 
 img.onload = () => resolve(img);
-
-}); img.src = src;
+ img.src = src;
+                                                          });
+                        }
