@@ -23,10 +23,10 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = img.width + borderWidth * 2;
 
-canvas.height = img.height + borderwidth * 2;
+canvas.height = img.height + borderWidth * 2;
 
 // Border Background 
-ctx.fillstyle = borderColor;
+ctx.fillStyle = borderColor;
 
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
