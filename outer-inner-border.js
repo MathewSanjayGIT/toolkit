@@ -45,19 +45,19 @@ const canvasWidth = TARGET_WIDTH - OUTER_BORDER * 2;
 
 const canvasHeight = TARGET_HEIGHT - OUTER_BORDER * 2;
 
-const maxingWidth = canvasWidth - GAP * 2 - INNER_BORDER * 2;
+const maxImgWidth = canvasWidth - GAP * 2 - INNER_BORDER * 2;
 
 const maxImgHeight = canvasHeight - GAP * 2 - INNER_BORDER * 2;
 
-const ratio = Math.min( maxingWidth/img.width, maxImgHeight/img.height,);
+const ratio = Math.min( maxImgWidth/img.width, maxImgHeight/img.height,);
 
-const imgwidth = img.width * ratio;
+const imgWidth = img.width * ratio;
 
 const imgHeight = img.height * ratio;
 
 // OUTER BORDER
 
-ctx.fillstyle = BORDER_COLOR;
+ctx.fillStyle = BORDER_COLOR;
 
 ctx.fillRect(0, 0, TARGET_WIDTH, TARGET_HEIGHT);
 
@@ -67,21 +67,21 @@ ctx.fillStyle = BG_COLOR;
 
 ctx.fillRect(OUTER_BORDER, OUTER_BORDER, canvasWidth, canvasHeight);
 
-const imagex=
+const imageX=
 
 OUTER_BORDER + (canvasWidth - (imgWidth + INNER_BORDER * 2)) / 2;
 
-const image = OUTER_BORDER + (canvasHeight - (imgHeight + INNER_BORDER * 2)) / 2;
+const imageY = OUTER_BORDER + (canvasHeight - (imgHeight + INNER_BORDER * 2)) / 2;
 
 // INNER BORDER
 
 ctx.fillStyle = BORDER_COLOR;
 
-ctx.fillRect( imagex, imageY, imgWidth + INNER_BORDER * 2, imgHeight + INNER_BORDER * 2, );
+ctx.fillRect( imageX, imageY, imgWidth + INNER_BORDER * 2, imgHeight + INNER_BORDER * 2, );
 
 // IMAGE
 
-ctx.drawImage( img, imagex + INNER_BORDER, imageY+ INNER_BORDER, imgWidth, imgHeight, );
+ctx.drawImage( img, imageX + INNER_BORDER, imageY+ INNER_BORDER, imgWidth, imgHeight, );
 
 };
 
