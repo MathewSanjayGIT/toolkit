@@ -64,5 +64,5 @@ alert("An error occurred while converting the PDF."); } finally {
 loader.style.display = "none";
 
 convertButton.disabled = false;
-
+}
 }
