@@ -91,7 +91,7 @@ ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
 
 else if (mode === "crop") {
 
-const scale = Math.max( ); targetWidth / img.width, targetHeight / img.height,
+const scale = Math.max( targetWidth / img.width, targetHeight / img.height,);
 
 const newWidth = img.width * scale;
 
