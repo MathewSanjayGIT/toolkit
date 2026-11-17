@@ -1,4 +1,7 @@
 async function convertPDF() {
+ const loader = document.getElementById("loader");
+ loader.style.display = "flex";
+ try {
 
 const file = document.getElementById("pdfFile").files[0];
 
@@ -79,4 +82,10 @@ link.click();
 
 alert(pdf.numPages + " page(s) combined into one PNG.");
 
+} catch (error){
+  console.error(error);
+  alert("An error occured while processing the pdf.");
+ } finally {
+  loader.style.display = "none";
+ }
 }
