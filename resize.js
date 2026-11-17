@@ -31,7 +31,11 @@ document.getElementById("mode").dispatchEvent(new Event("change"));
 // Set initial state
 
 document.getElementById("mode").dispatchEvent(new Event("change"));
-
+document.getElementById("bgType").addEventListener("change",
+                                          function (){
+                                            const bgColorSection = document.getElementById("bgColorSection");
+                                            bgColorSection.style.display = this.value === "color" ? "block" : "none";
+                                          });
 function processImage() {
 
 const file = document.getElementById("imageInput").files[0];
@@ -126,13 +130,18 @@ ctx.drawImage(img, x, y, newWidth, newHeight); }
 //
 
 else if (mode === "fit") {
+  const bgType = document.getElementById("bgType").value;
+  if (bgType === "color") {
 
 const bgColor = document.getElementById("bgColor").value;
 
 ctx.fillStyle = bgColor;
 
 ctx.fillRect(0, 0, targetWidth, targetHeight);
-
+  } else {
+// transparent bg
+    ctx.clearRect(0, 0, targetWidth, targetHeight);
+  }
 const scale = Math.min(
 
 targetWidth / img.width,
