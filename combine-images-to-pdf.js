@@ -38,7 +38,7 @@ dims = image.scale(1);
 
 image = await pdfDoc.embedJpg( imageBytes );
 
-dims image.scale(1);
+dims = image.scale(1);
 
 }
 
