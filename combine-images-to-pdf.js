@@ -4,35 +4,107 @@ const files = Array.from(document.getElementById("images").files);
 
 files.sort((a, b) =>
 
-a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base", }), );
+a.name.localeCompare( b.name, undefined, { numeric: true, sensitivity: "base" }
 
-if (files.length === 0) { alert("Please select images"); return; }
+)
 
-const {jsPDF} = window.jspdf;
-
-let pdf = null;
-
-for (let i=0; i < files.length; i++) {
-
-const imageUrl = await readFile(files[i]);
-
-const img = await loadImage(imageUrl);
-
-// Create first PDF page using image dimensions 
-  if (i === 0) {
-
-pdf = new jsPDF({ orientation: img.width > img.height? "landscape": "portrait",
-
-unit: "px", format: [img.width, img.height], });
-
-} else { pdf.addPage( [img.width, img.height], img.width > img.height? "landscape": "portrait",
 );
+
+if (!files.length) { alert("Please select images"); return; }
+
+const pdfDoc =
+
+await PDELib.PDFDocument.create();
+
+for (const file of files) {
+
+const imageBytes = await file.arrayBuffer();
+
+let image;
+
+let dims;
+
+if (
+
+file.type === "image/png"
+
+) {
+
+image = await pdfDoc.embedPng( imageBytes );
+
+dims = image.scale(1);
+
+} else {
+
+image = await pdfDoc.embedJpg( imageBytes );
+
+dims image.scale(1);
+
 }
 
-pdf.addImage(imageUrl, "PNG", 0, 0, img.width, img.height);
+const page =
+
+pdfDoc.addPage([
+
+dims.width,
+
+dims.height
+
+]);
+
+page.drawImage(
+
+image,
+
+{
+
+x: 0,
+
+y: 0,
+
+width: dims.width,
+
+height: dims.height
+
 }
 
-pdf.save("combined.pdf");
+);
+
+}
+
+const pdfBytes =
+
+await pdfDoc.save();
+
+const blob =
+
+new Blob(
+
+[pdfBytes],
+
+{ 
+
+type: "application/pdf"
+
+}
+
+);
+
+const url =
+
+URL.createObjectURL(blob);
+
+const a =
+
+document.createElement("a");
+
+a.href = url;
+
+a.download = "combined.pdf";
+
+a.click();
+
+URL.revokeobjectURL(url);
 }
 
 function readFile(file) {
