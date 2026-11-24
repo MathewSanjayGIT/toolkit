@@ -14,7 +14,7 @@ if (!files.length) { alert("Please select images"); return; }
 
 const pdfDoc =
 
-await PDELib.PDFDocument.create();
+await PDFLib.PDFDocument.create();
 
 for (const file of files) {
 
