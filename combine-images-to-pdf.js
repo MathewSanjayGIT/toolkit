@@ -104,7 +104,7 @@ a.download = "combined.pdf";
 
 a.click();
 
-URL.revokeobjectURL(url);
+URL.revokeObjectURL(url);
 }
 
 function readFile(file) {
