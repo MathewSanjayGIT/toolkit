@@ -1,5 +1,9 @@
 async function convertPDF() {
 
+  const loader = document.getElementById("loader");
+loader.style.display = "flex";
+  try {
+
 const file = document.getElementById("pdfFile").files[0];
 
 if (!file) { alert("Please select a PDF"); return;}
@@ -49,4 +53,10 @@ output.appendChild(document.createElement("br"));
 output.appendChild(document.createElement("br")); }
 
 alert(pdf.numPages + "page(s) converted successfully");
+  } catch (error) {
+    console.error(error);
+    alert("an error occurred, please contact admin.");
+  } finally {
+    loader.style.display = "none";
+  }
 }
